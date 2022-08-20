@@ -146,4 +146,14 @@ document.addEventListener("DOMContentLoaded", function(e){
             });
         }
     });
+
+    document.getElementById('cierresesion').addEventListener('click',()=>{
+        irse()
+        })
 });
+
+function irse() {
+    alert('Sesión cerrada');
+    localStorage.clear();
+    location.href= "login.html"
+}

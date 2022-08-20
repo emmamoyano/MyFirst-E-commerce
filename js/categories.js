@@ -140,4 +140,14 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showCategoriesList();
     });
+
+    document.getElementById('cierresesion').addEventListener('click',()=>{
+        irse()
+        })
 });
+
+function irse() {
+    alert('Sesión cerrada');
+    localStorage.clear();
+    location.href= "login.html"
+}
