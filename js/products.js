@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(LIST_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             currentCategoriesArray = resultObj.data
-            showCategoriesList(currentCategoriesArray.products) in "products.html";
+            showCategoriesList(currentCategoriesArray.products);
             
         }
     });
