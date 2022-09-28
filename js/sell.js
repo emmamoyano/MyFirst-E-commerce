@@ -150,10 +150,6 @@ document.addEventListener("DOMContentLoaded", function(e){
     document.getElementById('cierresesion').addEventListener('click',()=>{
         irse()
         })
+    nombreusuario()
 });
 
-function irse() {
-    alert('Sesión cerrada');
-    localStorage.clear();
-    location.href= "login.html"
-}

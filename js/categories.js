@@ -88,6 +88,8 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+    
+    // PRODUCTS_URL + localStorage.getItem("catID") + EXT_TYPE
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             currentCategoriesArray = resultObj.data
@@ -144,10 +146,5 @@ document.addEventListener("DOMContentLoaded", function(e){
     document.getElementById('cierresesion').addEventListener('click',()=>{
         irse()
         })
+    nombreusuario()
 });
-
-function irse() {
-    alert('Sesión cerrada');
-    localStorage.clear();
-    location.href= "login.html"
-}

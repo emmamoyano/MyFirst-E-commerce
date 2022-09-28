@@ -10,6 +10,9 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+  <!-- Bootstrap Font Icon CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -31,17 +34,87 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="index.html" id="cierresesion">Cerrar sesión</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  id="nombreusuario"></a>
+          </li>
+          <li class="nav-item">
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
+    <!-- <h1><i class="bi-globe"></i> Hello, world!</h1> -->
+    <div class="container" id="infoProductos">
+      <!-- <div class="alert alert-danger text-center" role="alert">
         <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+      </div> -->
     </div>
+    
+    <div id="coment">
+    
+    
+
+    </div>
+    
+    <section style="background-color: #eee;">
+      <div class="container my-5 py-5">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-12 col-lg-10 col-xl-8">
+            <div class="card">
+              
+              <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+                <div class="d-flex flex-start w-100">
+                  
+                  <div class="form-outline w-100">
+                    <textarea class="form-control" placeholder="¿Que te pareció el producto?" id="miComentario" rows="4"
+                      style="background: #fff;"></textarea>
+                    <!-- <label class="form-label" for="miComentario">Message</label> -->
+                  </div>
+                </div>
+                
+                <div class="float-end mt-2 pt-1">
+                  
+      Tu puntuación:<select id="puntaje">
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+        </select>
+                  <button type="button" class="btn btn-primary btn-sm" id="agregar">Publicar</button>
+                  <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- https://mdbootstrap.com/docs/standard/extended/comments/ Link para la caja de comentarios. Buscar "Simple comment" -->
+
+    <!-- <div>
+      <h3>Comentar</h3>
+      <p>Tu opinión:</p>
+      <textarea name="textarea" rows="5" cols="50" id="miComentario" placeholder="¿Que te pareció el producto?"></textarea>
+      <p>Tu puntuacion:</p>
+      <select id="puntaje">
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+        </select>
+      <button id="agregar">Enviar</button>
+    </div> -->
+
+    
+
+
+
   </main>
   <footer class="text-muted">
     <div class="container">

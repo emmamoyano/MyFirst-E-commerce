@@ -3,14 +3,14 @@
 
 function login() {
 
-let correo = document.getElementById('email2').value;
+let usuario = document.getElementById('email2').value;
 let clave = document.getElementById('password2').value;
 
 
-if (correo==="" || clave===""){
-    alert ("Debe ingresar su correo y clave");
+if (usuario==="" || clave===""){
+    alert ("Debe ingresar su usuario y clave");
 } else {
-    localStorage.setItem("email2", correo);
+    localStorage.setItem("email2", usuario);
     localStorage.setItem("clave", clave);
     location.href="index.html";
 }

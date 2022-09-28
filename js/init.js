@@ -40,3 +40,15 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+function irse() {
+  alert('Sesión cerrada');
+  localStorage.clear();
+  location.href= "login.html"
+}
+
+function nombreusuario() {
+ let nomb = localStorage.getItem("email2")
+  document.getElementById('nombreusuario').innerHTML = nomb;
+}
+
