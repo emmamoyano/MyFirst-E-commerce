@@ -47,8 +47,25 @@ function irse() {
   location.href= "login.html"
 }
 
-function nombreusuario() {
- let nomb = localStorage.getItem("email2")
-  document.getElementById('nombreusuario').innerHTML = nomb;
-}
+// function nombreusuario() {
+//  let nomb = localStorage.getItem("email2")
+//   document.getElementById('nombreusuario').innerHTML = nomb;
+// }
 
+function barraUsuario() {
+
+  let barrita = "";
+
+  barrita += `<div class="btn-group">
+  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+   ${localStorage.getItem("email2")}
+  </button>
+  <ul class="dropdown-menu">
+  <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+  <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+  <li id="cierresesion"><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+  </ul>
+</div>`;
+  
+  document.getElementById('barra').innerHTML += barrita
+}

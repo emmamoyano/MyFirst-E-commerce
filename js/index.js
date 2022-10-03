@@ -17,12 +17,13 @@ document.addEventListener("DOMContentLoaded", function(){
         alert('Debe iniciar sesión')
         location.href = "login.html";
     }
-
+    barraUsuario();
     document.getElementById('cierresesion').addEventListener('click',()=>{
         irse()
         })
 
-    nombreusuario();
+    // nombreusuario();
+    
     
 });
 

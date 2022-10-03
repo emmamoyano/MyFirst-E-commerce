@@ -143,8 +143,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 
+    barraUsuario();
     document.getElementById('cierresesion').addEventListener('click',()=>{
         irse()
         })
-    nombreusuario()
 });

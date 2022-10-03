@@ -12,8 +12,9 @@ function showProductsInfoArray(infodeProductos) {
         <div class="text-center">
         
       </div>
+      <div>
           ${contandoFotones(infodeProductos.images)}
-            
+            </div>
           <div class="card-body">
             <div class="text-center">
               <h5 class="card-title">${infodeProductos.name}</h5>
@@ -41,37 +42,54 @@ function showProductsInfoArray(infodeProductos) {
   document.getElementById("infoProductos").innerHTML = info;
 }
 
-// `<br>
-//   <br>
-//   <div> 
-//       <div>  
-//       <h2> ${infodeProductos.name} </h4>
-//       </div>
-//     <hr>
+// function contandoFotones(fotos) {
+//   let imagenes = "";
 
-//         <p> <strong>Precio</strong> <br>
-//         ${infodeProductos.cost}</p>
-//         <p> <strong>Descripción</strong> <br>
-//         ${infodeProductos.description}</p>
-        
-//         <p> <strong>Categoria</strong> <br>
-//         ${infodeProductos.category}</p>
-//         <p> <strong>Cantidad de vendidos</strong> <br>
-//         ${infodeProductos.soldCount}</p>
-//         <div id="lasimagenes"><p> <strong>Imagenes ilustrativas</strong> <br>
-//         ${contandoFotones(infodeProductos.images)}</p>
-//         </div>
-
-//   </div>
-//       `;
+//   for (let imagen of fotos){
+//     imagenes += `<div> <img src= ${imagen} style="width: 405px"> <div>`
+//   } return imagenes
+// }
 
 function contandoFotones(fotos) {
   let imagenes = "";
 
   for (let imagen of fotos){
-    imagenes += `<div> <img src= ${imagen} style="width: 405px"> <div>`
+    imagenes += `<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+      <img src= ${imagen} class="d-block w-100" alt="...">
+      </div>
+      
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>`
   } return imagenes
 }
+
+// function probando() {
+//   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+//   <div class="carousel-inner">
+//     <div class="carousel-item active">
+//       <img src=${imagen} class="d-block w-100" alt="..."> </img>
+//     </div>
+//   </div>
+//   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+//     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+//     <span class="visually-hidden">Previous</span>
+//   </button>
+//   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+//     <span class="carousel-control-next-icon" aria-hidden="true"></span>
+//     <span class="visually-hidden">Next</span>
+//   </button>
+// </div>
+// }
 
 function showComentarios(comentarios) {
   let comentarito = "";
@@ -79,7 +97,7 @@ function showComentarios(comentarios) {
     let masComentarios = comentarios[i];
     comentarito += `
     <section style="background-color: #f7f6f6;">
-    <div class="container my-5 py-5 text-dark">
+    
       <div class="row d-flex justify-content-center">
         <div class="col-md-12 col-lg-10 col-xl-8">
           
@@ -110,7 +128,7 @@ function showComentarios(comentarios) {
           </div>
         </div>
       </div>
-    </div>
+    
   </section>
   `
   }
@@ -120,16 +138,13 @@ function showComentarios(comentarios) {
   
 }
 
-// comentarito += `<div> <strong>${masComentarios.user}</strong> - ${masComentarios.dateTime} ${puntuandoConCaras(masComentarios.score)}<br>
-//      ${masComentarios.description} </div> `
-
 function nuevoComentario(){
 
   let today = new Date ();
   let ahora = today.getFullYear() + "-" + today.getDate() + "-" + parseInt(today.getMonth()+ 1) + "-" + today.getUTCHours() + ":" + today.getUTCMinutes() + ":" + today.getUTCSeconds();
   let com = `
   <section style="background-color: #f7f6f6;">
-  <div class="container my-5 py-5 text-dark">
+  
     <div class="row d-flex justify-content-center">
       <div class="col-md-12 col-lg-10 col-xl-8">
         
@@ -160,21 +175,55 @@ function nuevoComentario(){
         </div>
       </div>
     </div>
-  </div>
+  
 </section>
 `
   document.getElementById('coment').innerHTML += com;
 }
 
+function setCatID(id) {
+  localStorage.setItem("productID", id);
+  window.location = "product-info.html"
+}
 
-// function contandocaritas(comentarios) {
-//   let puntuandoConCaras = "";
-//   for(let i = 0; i < comentarios.length; i++){
-//     let masComentarios = comentarios[i];
-//     puntuandoConCaras += `<div> <strong>${masComentarios.score}</strong> -  </div> `
-//   }
-//   document.getElementById("coment").innerHTML = puntuandoConCaras;
-// }
+function mostrarRelacionados(infodeProductos) {
+  let relacionados = "";
+
+  for(let i = 0; i < infodeProductos.length; i++){
+    let masRelacionados = infodeProductos[i];
+    relacionados += `
+  <div onclick="setCatID(${masRelacionados.id})"class="col-md-4" id="hola">
+    <div class="card mb-4 shadow-sm custom-card cursor-active">
+      <img class="bd-placeholder-img card-img-top" src=${masRelacionados.image}>
+      
+      <h3 class="m-3">${masRelacionados.name}</h3>
+    </div>
+  </div>
+  
+    `
+    // onclick="setCatID(${category.id})"
+  } 
+  document.getElementById("productosRelacionados").innerHTML += relacionados;
+  
+}
+
+
+
+
+// `<div> ${masRelacionados.name} <img src= ${masRelacionados.image} style="width: 405px"> <div>`
+
+// `<div class="row">
+//     <div class="col-md-4">
+//       <div class="thumbnail">
+        
+//           <img src=${masRelacionados.image} alt="Lights" style="width:100%">
+//           <div class="caption">
+//             <p>${masRelacionados.name}</p>
+//           </div>
+//         </a>
+//       </div>
+//     </div>
+//     `
 
 function puntuandoConCaras(calificacion){
             
@@ -190,15 +239,13 @@ function puntuandoConCaras(calificacion){
   };
 
 
-
-
-
 document.addEventListener("DOMContentLoaded", function (e) {
   let idInfo = localStorage.getItem("productID");
   getJSONData(PRODUCT_INFO_URL + idInfo + EXT_TYPE).then(function (resultObj) {
     if (resultObj.status === "ok") {
       infodeProductos = resultObj.data;
       showProductsInfoArray(infodeProductos);
+      mostrarRelacionados(infodeProductos.relatedProducts);
     }
   });
 
@@ -214,9 +261,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById('miComentario').value = "";
   })
   
-
-
-  nombreusuario()
+  barraUsuario();
+    document.getElementById('cierresesion').addEventListener('click',()=>{
+        irse()
+        })
 });
 
 

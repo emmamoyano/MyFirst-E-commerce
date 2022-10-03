@@ -194,3 +194,17 @@ a.custom-card:hover {
   width: 50px;
 }
 
+/* #fotosRelacionadas {
+  display: flex;
+} */
+
+#hola {
+  display: flex;
+  flex-direction: row;
+}
+
+/* .dropdown {
+  height: 35px;
+  width: 10px;
+  box-sizing: initial;
+} */
