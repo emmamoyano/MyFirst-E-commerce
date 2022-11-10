@@ -43,7 +43,8 @@ let getJSONData = function(url){
 
 function irse() {
   alert('Sesión cerrada');
-  localStorage.clear();
+  localStorage.removeItem('email2');
+  localStorage.removeItem('clave');
   location.href= "login.html"
 }
 

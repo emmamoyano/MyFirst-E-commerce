@@ -54,11 +54,56 @@
     </div>
   </nav>
   <main>
+
     <div class="container">
+      <form id="formularioPerfil" class="needs-validation" novalidate >
+      <div class="row justify-content-md-center">
+        <div class="col-md-8 order-md-1">
+          <br>
+          <br>
+          <br>
+            <div class="row">
+              
+              <div class="col-md-6 mb-3">
+                <label for="primerNombre">Primer nombre *</label>
+                <input type="text" class="form-control"  name="primerNombre" id="primerNombreLocal" required>
+                <div class="invalid-feedback">Debe ingresar su nombre</div>
+                <div class="valid-feedback">Dato valido.</div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="segundoNombre">Segundo nombre </label>
+                <input type="text" class="form-control" id="segundoNombreLocal" name="segundoNombre">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="primerApellido">Primer apellido *</label>
+                <input type="text" class="form-control" id="primerApellidoLocal" name="primerApellido" required>
+                <div class="invalid-feedback">Debe ingresar su apellido</div>
+                <div class="valid-feedback">Dato valido.</div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="segundoApellido">Segundo apellido</label>
+                <input type="text" class="form-control" id="segundoApellidoLocal" name="segundoApellido">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="correo">E-mail</label>
+                <input type="text" class="form-control" id="emailPerfil" name="correo" value="">             
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="telefono">Teléfono de contacto *</label>
+                <input type="number" class="form-control" id="telefonoContacto" name="numeroContacto" required>
+                <div class="invalid-feedback">Debe ingresar su número</div>
+                <div class="valid-feedback">Dato valido.</div>
+              </div>
+              <button class="btn btn-primary" type="submit" id="botonPerfil">Guardar cambios</button>
+            </div>
+            <!-- <p id="emailPerfil"></p> -->
+        </div>
+    </div>
+    <!-- <div class="container">
       <div class="alert alert-danger text-center" role="alert">
         <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
       </div>
-    </div>
+    </div> -->
   </main>
   <footer class="text-muted">
     <div class="container">

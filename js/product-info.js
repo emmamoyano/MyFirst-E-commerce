@@ -1,6 +1,8 @@
 let infodeProductos = [];
 let comentarios = [];
-
+// let compraNueva = [infodeProductos];
+// let compraNueva = [];
+let compraNueva = [];
 
 function showProductsInfoArray(infodeProductos) {
   let info = "";
@@ -13,11 +15,23 @@ function showProductsInfoArray(infodeProductos) {
         
       </div>
       <div>
-          ${contandoFotones(infodeProductos.images)}
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+       ${contandoFotones(infodeProductos)}
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
             </div>
           <div class="card-body">
             <div class="text-center">
-              <h5 class="card-title">${infodeProductos.name}</h5>
+              <h5 class="card-title" id="nom">${infodeProductos.name}</h5>
               <p class="text-muted mb-4">${infodeProductos.description}</p>
             </div>
             <div>
@@ -29,7 +43,9 @@ function showProductsInfoArray(infodeProductos) {
               </div>
               <div class="d-flex justify-content-between">
                 <span>Precio</span><span>UYU ${infodeProductos.cost}</span>
+                
               </div>
+              <button type="button" class="btn btn-primary btn-sm" id="comprar">Comprar</button>
             </div>
             
           </div>
@@ -42,34 +58,38 @@ function showProductsInfoArray(infodeProductos) {
   document.getElementById("infoProductos").innerHTML = info;
 }
 
-// function contandoFotones(fotos) {
-//   let imagenes = "";
+function comprarProducto() {
+  
+  if (localStorage.getItem('compraNueva') === "" || localStorage.getItem('compraNueva') === null){
+    compraNueva = [];
+  } else {
+    compraNueva = JSON.parse(localStorage.getItem('compraNueva'))
+  }
+  compraNueva.push(infodeProductos)
+  localStorage.setItem('compraNueva', JSON.stringify(compraNueva))
+  alert('Compra añadida al carrito')
+  
 
-//   for (let imagen of fotos){
-//     imagenes += `<div> <img src= ${imagen} style="width: 405px"> <div>`
-//   } return imagenes
-// }
+}
 
-function contandoFotones(fotos) {
+function contandoFotones(array) {
   let imagenes = "";
 
-  for (let imagen of fotos){
-    imagenes += `<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-      <img src= ${imagen} class="d-block w-100" alt="...">
-      </div>
-      
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>`
+  
+  for (let i = 0; i < array.images.length; i++){
+   if (i === 0) {
+    imagenes += `
+    <div class="carousel-item active">
+    <img src="${array.images[i]}" class="d-block w-100" alt="...">
+  </div>
+  `
+   } else {
+    imagenes += `
+    <div class="carousel-item">
+    <img src="${array.images[i]}" class="d-block w-100" alt="...">
+  </div>
+  `
+   }
   } return imagenes
 }
 
@@ -194,8 +214,9 @@ function mostrarRelacionados(infodeProductos) {
     relacionados += `
   <div onclick="setCatID(${masRelacionados.id})"class="col-md-4" id="hola">
     <div class="card mb-4 shadow-sm custom-card cursor-active">
+    <div class="row">
       <img class="bd-placeholder-img card-img-top" src=${masRelacionados.image}>
-      
+      </div>
       <h3 class="m-3">${masRelacionados.name}</h3>
     </div>
   </div>
@@ -244,8 +265,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(PRODUCT_INFO_URL + idInfo + EXT_TYPE).then(function (resultObj) {
     if (resultObj.status === "ok") {
       infodeProductos = resultObj.data;
+      // compraNueva = resultObj.data;
       showProductsInfoArray(infodeProductos);
       mostrarRelacionados(infodeProductos.relatedProducts);
+      document.getElementById('comprar').addEventListener('click',()=>{
+        comprarProducto()
+      })
     }
   });
 
@@ -265,6 +290,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById('cierresesion').addEventListener('click',()=>{
         irse()
         })
+  
 });
 
 
