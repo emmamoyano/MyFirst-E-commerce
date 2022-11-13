@@ -1,5 +1,18 @@
 let perfil = []
 
+function validacion() {
+  let expresionRegular =
+    /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    let validity = true
+  let email = document.getElementById("emailPerfil");
+  if (expresionRegular.test(email.value)) {
+    email.setCustomValidity("");
+  } else {
+    email.setCustomValidity(false);
+    validity = false;
+  }
+  return validity
+}
 
 function guardarDatos() {
   let array = []
@@ -31,14 +44,7 @@ function cargarDatos(){
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
-  if (
-    localStorage.getItem("email2") === "" ||
-    localStorage.getItem("email2") == null
-  ) {
-    alert("Debe iniciar sesión");
-    window.location = "login.html";
-    // si el usuario no está registrado lo redirige al login
-  } else {
+  
     document.getElementById("emailPerfil").value =
     localStorage.getItem("email2");
     barraUsuario();
@@ -47,11 +53,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
     perfil = JSON.parse(localStorage.getItem('perfilUsuario'))
     cargarDatos()
-  }
+  
   document
     .getElementById("formularioPerfil")
     .addEventListener("submit", function (e) {
-      if (!this.checkValidity()) {
+      if (!validacion() || !this.checkValidity()) {
         e.preventDefault();
         e.stopPropagation();
       } else {
@@ -68,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
       let eventos = ["change", "input"];
 
       eventos.forEach((evento) => {
-        document.body.addEventListener(evento);
+        document.body.addEventListener(evento, validacion);
       });
     });
 });

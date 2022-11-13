@@ -60,10 +60,14 @@
       <div class="row justify-content-md-center">
         <div class="col-md-8 order-md-1">
           <br>
-          <br>
-          <br>
-            <div class="row">
-              
+          
+          <div class="col-md-6 mb-3">
+            <img src="/img/img_perfil.png" alt="" id="imagenPerfil">
+            <input type="file" name="" id="cambiarImagen">
+            <label for="cambiarImagen">Cambiar imagen</label>
+          </div>
+          <div class="row">
+            
               <div class="col-md-6 mb-3">
                 <label for="primerNombre">Primer nombre *</label>
                 <input type="text" class="form-control"  name="primerNombre" id="primerNombreLocal" required>
@@ -86,7 +90,9 @@
               </div>
               <div class="col-md-6 mb-3">
                 <label for="correo">E-mail</label>
-                <input type="text" class="form-control" id="emailPerfil" name="correo" value="">             
+                <input type="text" class="form-control" id="emailPerfil" name="correo" value="">
+                <div class="invalid-feedback">Debe ingresar un correo valido</div>
+                <div class="valid-feedback">Dato valido.</div>          
               </div>
               <div class="col-md-6 mb-3">
                 <label for="telefono">Teléfono de contacto *</label>
