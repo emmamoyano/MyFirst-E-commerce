@@ -1,14 +1,4 @@
-// function checkValidity() {
-//     let validity = true;
 
-//     if (document.getElementById("vencimiento").value === "") {
-//       validity = false;
-//       document.getElementById("term-invalid").style.display = "inline";
-//     } else {
-//       document.getElementById("term-invalid").style.display = "none";
-//     }
-//     return validity;
-//   }
 function validacion() {
   let expresionRegular =
     /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
@@ -41,16 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         e.preventDefault();
         e.stopPropagation();
-        login()
-        
-
-        // cargarDatos()
+        login() 
       }
-
-      // document.getElementById('login').addEventListener('click',()=>{
-      //     login();
-      // })
-
       document.body.classList.add("was-validated");
 
       let eventos = ["change", "input"];

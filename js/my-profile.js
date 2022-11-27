@@ -29,7 +29,6 @@ function guardarDatos() {
 }
 
 function cargarDatos(){
-  // let document = document.getElementById();
   
   if (perfil == "" || perfil == null){
    perfil = []
@@ -43,17 +42,41 @@ function cargarDatos(){
   }
 }
 
+function cargarImagen(){
+  const url = localStorage.getItem('my-image');
+    const img = new Image()
+    img.src = url
+    console.log(url)
+    document.getElementById('miFotoNueva').src = url
+}
+
 document.addEventListener("DOMContentLoaded", function (e) {
   
-    document.getElementById("emailPerfil").value =
-    localStorage.getItem("email2");
-    barraUsuario();
-    document.getElementById("cierresesion").addEventListener("click", () => {
-      irse();
+  document.getElementById("emailPerfil").value =
+  localStorage.getItem("email2");
+  barraUsuario();
+  document.getElementById("cierresesion").addEventListener("click", () => {
+    irse();
     });
     perfil = JSON.parse(localStorage.getItem('perfilUsuario'))
     cargarDatos()
-  
+    const fileElement = document.getElementById('file-el');
+    
+    fileElement.addEventListener('change', ()=>{
+      const fr = new FileReader();
+      fr.readAsDataURL(fileElement.files[0])
+      fr.addEventListener('load', ()=>{
+        const url = fr.result
+        localStorage.setItem('my-image', url)
+        window.location = "my-profile.html"
+      })
+    })
+    if (localStorage.getItem('my-image') === "" || localStorage.getItem('my-image') === null){
+  document.getElementById('miFotoNueva').src = "/img/img_perfil.png";
+} else {
+  cargarImagen()
+
+}
   document
     .getElementById("formularioPerfil")
     .addEventListener("submit", function (e) {
